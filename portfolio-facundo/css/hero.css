@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════════════════════════
+   HERO.CSS — Sección principal de presentación
+   Portfolio de Facundo Argüello
+═══════════════════════════════════════════════════════════════ */
+
+
+/* -------------------------------------------------------
+   CONTENEDOR HERO — fondo marino profundo
+------------------------------------------------------- */
+.hero {
+  min-height: 100vh;
+  background: var(--marino);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+}
+
+
+/* -------------------------------------------------------
+   ORBES DE LUZ ANIMADOS (gradientes flotantes)
+------------------------------------------------------- */
+.hero__orbe {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero__orbe--1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.30) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+  animation: flotar 9s ease-in-out infinite;
+}
+
+.hero__orbe--2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.18) 0%, transparent 70%);
+  bottom: -80px;
+  left: 10%;
+  animation: flotarAlternado 12s ease-in-out infinite;
+}
+
+.hero__orbe--3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(30, 58, 95, 0.5) 0%, transparent 70%);
+  top: 40%;
+  left: 40%;
+  animation: flotar 15s ease-in-out infinite 2s;
+}
+
+
+/* -------------------------------------------------------
+   INNER — grid de dos columnas
+------------------------------------------------------- */
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero__contenido {
+  max-width: 680px;
+}
+
+
+/* -------------------------------------------------------
+   CHIP DE DISPONIBILIDAD
+------------------------------------------------------- */
+.hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--fuente-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--azul-claro);
+  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 100px;
+  background: rgba(96, 165, 250, 0.06);
+  margin-bottom: 2rem;
+}
+
+.hero__chip-punto {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Anillo de pulso alrededor del punto verde */
+.hero__chip-punto::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: rgba(34, 197, 94, 0.4);
+  border-radius: 50%;
+  animation: pulso 2s ease-out infinite;
+}
+
+
+/* -------------------------------------------------------
+   TÍTULO PRINCIPAL
+------------------------------------------------------- */
+.hero__titulo {
+  font-family: var(--fuente-display);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1.05;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+  overflow: hidden;
+}
+
+/* Contenedor de cada línea — el overflow: hidden crea el efecto de cortina */
+.linea-titulo {
+  display: block;
+  overflow: hidden;
+  line-height: 1.15;
+}
+
+/* Texto en cursiva dentro del título */
+.hero__titulo em {
+  font-style: italic;
+  color: var(--azul-claro);
+}
+
+/* Líneas grandes */
+.linea-titulo--grande {
+  font-size: 1.1em;
+  letter-spacing: -0.02em;
+}
+
+
+/* -------------------------------------------------------
+   SUBTÍTULO / TYPEWRITER
+------------------------------------------------------- */
+.hero__subtitulo {
+  font-family: var(--fuente-cuerpo);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2.8rem;
+  min-height: 1.8em;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+/* Cursor parpadeante del typewriter */
+.hero__cursor {
+  color: var(--azul-claro);
+  font-weight: 300;
+  animation: parpadeoCursor 1.1s ease infinite;
+}
+
+
+/* -------------------------------------------------------
+   BOTONES HERO
+------------------------------------------------------- */
+.hero__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* El botón primario del hero tiene estilo especial */
+.hero__botones .btn-primario {
+  background: var(--blanco);
+  color: var(--marino);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero__botones .btn-primario:hover {
+  background: var(--azul-suave);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero__botones .btn-secundario {
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero__botones .btn-secundario:hover {
+  color: var(--blanco);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* -------------------------------------------------------
+   PANEL DE MÉTRICAS (lado derecho)
+------------------------------------------------------- */
+.hero__metricas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.metrica-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radio-lg);
+  padding: 1.5rem 1.8rem;
+  text-align: center;
+  transition: var(--transicion);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brillo superior en hover */
+.metrica-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.metrica-card:hover::before {
+  transform: scaleX(1);
+}
+
+.metrica-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(96, 165, 250, 0.2);
+  transform: translateY(-3px);
+}
+
+.metrica-card__numero {
+  font-family: var(--fuente-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1;
+  display: inline-block;
+}
+
+.metrica-card__unidad {
+  font-family: var(--fuente-display);
+  font-size: 1.6rem;
+  color: var(--azul-claro);
+  font-weight: 400;
+}
+
+.metrica-card__label {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+
+/* -------------------------------------------------------
+   FLECHA SCROLL DOWN
+------------------------------------------------------- */
+.hero__scroll-down {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.3s ease;
+  z-index: 1;
+  animation: rebotarAbajo 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-down:hover {
+  color: var(--azul-claro);
+}
+
+
+/* -------------------------------------------------------
+   RESPONSIVE HERO
+------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero__metricas {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+  }
+
+  .metrica-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .metrica-card__numero { font-size: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero__titulo {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .hero__metricas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero__botones {
+    flex-direction: column;
+  }
+
+  .hero__botones .btn {
+    justify-content: center;
+  }
+}

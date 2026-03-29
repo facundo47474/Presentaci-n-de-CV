@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ═══════════════════════════════════════════
+       META Y CONFIGURACIÓN
+  ═══════════════════════════════════════════ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Facundo Argüello — Desarrollador Web Full-Stack · Buenos Aires" />
+  <title>Facundo Argüello · Developer</title>
+
+  <!-- ═══════════════════════════════════════════
+       FUENTES GOOGLE
+  ═══════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ═══════════════════════════════════════════
+       HOJAS DE ESTILO MODULARES
+  ═══════════════════════════════════════════ -->
+  <link rel="stylesheet" href="css/animaciones.css" />
+  <link rel="stylesheet" href="css/estilos-globales.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/secciones.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       CURSOR PERSONALIZADO
+  ═══════════════════════════════════════════ -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-seguidor" id="cursorSeguidor" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       BARRA DE PROGRESO DE SCROLL
+  ═══════════════════════════════════════════ -->
+  <div class="barra-progreso" id="barraProgreso" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVEGACIÓN
+  ═══════════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+    <div class="contenedor nav__inner">
+
+      <a href="#inicio" class="nav__logo" aria-label="Inicio">
+        <span class="nav__logo-fa">FA</span>
+        <span class="nav__logo-punto">.</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#sobre-mi"    class="nav__link">Sobre mí</a></li>
+        <li><a href="#experiencia" class="nav__link">Experiencia</a></li>
+        <li><a href="#stack"       class="nav__link">Stack</a></li>
+        <li><a href="#proyectos"   class="nav__link">Proyectos</a></li>
+        <li><a href="#contacto"    class="nav__link">Contacto</a></li>
+      </ul>
+
+      <a href="mailto:facundotomas018@gmail.com" class="nav__cta btn-magnetico">
+        Contrátame
+      </a>
+
+      <button class="nav__hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true">
+    <div class="nav__overlay-inner">
+      <a href="#sobre-mi"    class="nav__overlay-link" data-cerrar>Sobre mí</a>
+      <a href="#experiencia" class="nav__overlay-link" data-cerrar>Experiencia</a>
+      <a href="#stack"       class="nav__overlay-link" data-cerrar>Stack</a>
+      <a href="#proyectos"   class="nav__overlay-link" data-cerrar>Proyectos</a>
+      <a href="#contacto"    class="nav__overlay-link" data-cerrar>Contacto</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO — SECCIÓN PRINCIPAL
+    ═══════════════════════════════════════════ -->
+    <section class="hero" id="inicio" aria-label="Presentación">
+
+      <!-- Orbes de luz animados -->
+      <div class="hero__orbe hero__orbe--1" aria-hidden="true"></div>
+      <div class="hero__orbe hero__orbe--2" aria-hidden="true"></div>
+      <div class="hero__orbe hero__orbe--3" aria-hidden="true"></div>
+
+      <div class="contenedor hero__inner">
+
+        <div class="hero__contenido">
+
+          <!-- Chip de disponibilidad -->
+          <div class="hero__chip" data-revelar>
+            <span class="hero__chip-punto"></span>
+            Disponible para proyectos
+          </div>
+
+          <!-- Título con animación de palabras -->
+          <h1 class="hero__titulo" aria-label="¡Hola! Soy Facundo Argüello.">
+            <span class="linea-titulo" data-revelar data-delay="100">
+              <em>¡Hola!</em> Soy
+            </span>
+            <span class="linea-titulo linea-titulo--grande" data-revelar data-delay="200">
+              Facundo
+            </span>
+            <span class="linea-titulo linea-titulo--grande" data-revelar data-delay="300">
+              Argüello.
+            </span>
+          </h1>
+
+          <!-- Subtítulo con typewriter -->
+          <p class="hero__subtitulo" data-revelar data-delay="400">
+            <span id="textoTypewriter"></span><span class="hero__cursor" aria-hidden="true">|</span>
+          </p>
+
+          <!-- Botones CTA -->
+          <div class="hero__botones" data-revelar data-delay="550">
+            <a href="#proyectos" class="btn btn-primario btn-magnetico">
+              <span>Ver proyectos</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#contacto" class="btn btn-secundario btn-magnetico">
+              <span>Contactame</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Panel de métricas lateral -->
+        <div class="hero__metricas" data-revelar data-delay="300">
+
+          <div class="metrica-card">
+            <span class="metrica-card__numero" data-contar="19">0</span>
+            <span class="metrica-card__unidad">años</span>
+            <p class="metrica-card__label">De edad</p>
+          </div>
+
+          <div class="metrica-card">
+            <span class="metrica-card__numero" data-contar="2">0</span>
+            <span class="metrica-card__unidad">+</span>
+            <p class="metrica-card__label">Años de experiencia</p>
+          </div>
+
+          <div class="metrica-card">
+            <span class="metrica-card__numero" data-contar="10">0</span>
+            <span class="metrica-card__unidad">+</span>
+            <p class="metrica-card__label">Proyectos completados</p>
+          </div>
+
+          <div class="metrica-card">
+            <span class="metrica-card__numero" data-contar="4">0</span>
+            <span class="metrica-card__unidad">+</span>
+            <p class="metrica-card__label">Certificaciones</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Flecha scroll down -->
+      <a href="#sobre-mi" class="hero__scroll-down" aria-label="Ir a Sobre mí">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SOBRE MÍ
+    ═══════════════════════════════════════════ -->
+    <section class="seccion sobre-mi" id="sobre-mi" aria-label="Sobre mí">
+      <div class="contenedor">
+
+        <div class="sobre-mi__grid">
+
+          <!-- Columna de texto -->
+          <div class="sobre-mi__texto">
+            <div class="etiqueta-seccion" data-scroll-revelar>Un poco sobre mi</div>
+            <h2 class="titulo-seccion" data-scroll-revelar data-delay="100">
+              Apasionado por<br><em>construir cosas</em><br>que importan.
+            </h2>
+
+            <div class="sobre-mi__parrafos">
+              <p data-scroll-revelar data-delay="150">
+                Tengo <strong>19 años</strong>, vivo en <strong>Buenos Aires</strong> y estudio
+                Programación en la <strong>UTN (sede Medrano)</strong>. Busco constantemente
+                crecer en el campo tecnológico y adquirir experiencia real.
+              </p>
+              <p data-scroll-revelar data-delay="200">
+                Complemento mi carrera con certificaciones respaldadas por
+                <strong>Mercado Libre</strong>, <strong>Globant</strong> (Digital House,
+                Gueyard y Beta Hub) y formación en <strong>Silicon Misiones</strong>.
+              </p>
+              <p data-scroll-revelar data-delay="250">
+                Me apasiona el <strong>diseño de software</strong> y la
+                <strong>arquitectura limpia</strong> — principios como
+                <em>Separación de Intereses</em> para código escalable y mantenible.
+              </p>
+            </div>
+
+            <!-- Rasgos personales -->
+            <div class="rasgos" data-scroll-revelar data-delay="300">
+              <span class="rasgo">Proactivo</span>
+              <span class="rasgo">Adaptable</span>
+              <span class="rasgo">Organizado</span>
+              <span class="rasgo">Resolutivo</span>
+            </div>
+          </div>
+
+          <!-- Columna de datos y certificaciones -->
+          <div class="sobre-mi__lateral">
+
+            <div class="info-card" data-scroll-revelar data-delay="200">
+              <div class="info-card__fila">
+                <span class="info-card__icono">🎓</span>
+                <div>
+                  <p class="info-card__titulo">UTN Medrano</p>
+                  <p class="info-card__sub">Tecnicatura en Programación · En curso</p>
+                </div>
+              </div>
+              <div class="info-card__fila">
+                <span class="info-card__icono">📍</span>
+                <div>
+                  <p class="info-card__titulo">Ciudad de Buenos Aires</p>
+                  <p class="info-card__sub">Argentina · CABA</p>
+                </div>
+              </div>
+              <div class="info-card__fila">
+                <span class="info-card__icono">💼</span>
+                <div>
+                  <p class="info-card__titulo">Disponible</p>
+                  <p class="info-card__sub">Freelance · Part-time · Full-time</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificaciones -->
+            <div class="certs-card" data-scroll-revelar data-delay="300">
+              <p class="certs-card__titulo">Certificaciones</p>
+              <ul class="certs-lista">
+                <li class="cert">
+                  <div class="cert__marca"></div>
+                  <div>
+                    <p class="cert__nombre">Desarrollo Web y QA automatizado</p>
+                    <p class="cert__emisor">Digital House · Mercado Libre</p>
+                  </div>
+                </li>
+                <li class="cert">
+                  <div class="cert__marca"></div>
+                  <div>
+                    <p class="cert__nombre">Programación Orientada a Objetos</p>
+                    <p class="cert__emisor">Globant · Gueyard · Beta Hub</p>
+                  </div>
+                </li>
+                <li class="cert">
+                  <div class="cert__marca"></div>
+                  <div>
+                    <p class="cert__nombre">Programación Aplicada</p>
+                    <p class="cert__emisor">Silicon Misiones</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EXPERIENCIA
+    ═══════════════════════════════════════════ -->
+    <section class="seccion experiencia" id="experiencia" aria-label="Experiencia laboral">
+      <div class="contenedor">
+
+        <div class="seccion__encabezado" data-scroll-revelar>
+          <div class="etiqueta-seccion">Trayectoria</div>
+          <h2 class="titulo-seccion">Experiencia <em>Laboral</em></h2>
+        </div>
+
+        <div class="exp-grid">
+
+          <!-- Item 1 -->
+          <article class="exp-item" data-scroll-revelar data-delay="100">
+            <div class="exp-item__linea-v" aria-hidden="true"></div>
+            <div class="exp-item__header">
+              <div class="exp-item__icono" aria-hidden="true">💻</div>
+              <div>
+                <p class="exp-item__periodo">2023 — Presente</p>
+                <h3 class="exp-item__cargo">Desarrollador Web Freelance</h3>
+                <p class="exp-item__empresa">Independiente · Remoto</p>
+              </div>
+            </div>
+            <p class="exp-item__descripcion">
+              Venta y desarrollo de sitios web <strong>landing page</strong> y
+              <strong>e-commerce</strong> para negocios. Manejo completo del ciclo:
+              relevamiento, diseño, desarrollo, despliegue y soporte.
+            </p>
+            <div class="exp-item__tags">
+              <span>Next.js</span><span>React</span><span>PostgreSQL</span><span>Firebase</span>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="exp-item" data-scroll-revelar data-delay="200">
+            <div class="exp-item__linea-v" aria-hidden="true"></div>
+            <div class="exp-item__header">
+              <div class="exp-item__icono" aria-hidden="true">🏥</div>
+              <div>
+                <p class="exp-item__periodo">Experiencia previa</p>
+                <h3 class="exp-item__cargo">Soporte</h3>
+                <p class="exp-item__empresa">Hospital Naval Pedro Mallo · Buenos Aires</p>
+              </div>
+            </div>
+            <p class="exp-item__descripcion">
+              Soporte técnico a <strong>servidores institucionales</strong> en entorno
+              hospitalario. Gestión de incidencias y mantenimiento preventivo de
+              infraestructura IT crítica.
+            </p>
+            <div class="exp-item__tags">
+              <span>Servidores</span><span>Infraestructura</span>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="exp-item" data-scroll-revelar data-delay="300">
+            <div class="exp-item__linea-v" aria-hidden="true"></div>
+            <div class="exp-item__header">
+              <div class="exp-item__icono" aria-hidden="true">🎓</div>
+              <div>
+                <p class="exp-item__periodo">2026 — En curso</p>
+                <h3 class="exp-item__cargo">Tecnicatura en Programación</h3>
+                <p class="exp-item__empresa">Universidad Tecnológica Nacional · Medrano</p>
+              </div>
+            </div>
+            <p class="exp-item__descripcion">
+              Formación en algoritmia, estructuras de datos, arquitectura de software,
+              bases de datos y desarrollo de sistemas. Proyectos prácticos con enfoque
+              en el mundo real.
+            </p>
+            <div class="exp-item__tags">
+              <span>Algoritmos</span><span>POO</span><span>Bases de Datos</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         STACK TECNOLÓGICO
+    ═══════════════════════════════════════════ -->
+    <section class="seccion stack" id="stack" aria-label="Stack tecnológico">
+      <div class="contenedor">
+
+        <div class="seccion__encabezado" data-scroll-revelar>
+          <div class="etiqueta-seccion">Herramientas</div>
+          <h2 class="titulo-seccion">Stack <em>Tecnológico</em></h2>
+          <p class="seccion__descripcion">
+            Las tecnologías con las que construyo soluciones robustas y escalables.
+          </p>
+        </div>
+
+        <div class="stack__grupos">
+
+          <div class="stack__grupo" data-scroll-revelar data-delay="50">
+            <div class="stack__grupo-header">
+              <span class="stack__grupo-icono">⌨️</span>
+              <h3 class="stack__grupo-titulo">Lenguajes</h3>
+            </div>
+            <div class="stack__tecnologias">
+              <div class="tech-pill tech-pill--destacado">JavaScript</div>
+              <div class="tech-pill tech-pill--destacado">Python</div>
+              <div class="tech-pill tech-pill--destacado">Java</div>
+              <div class="tech-pill">HTML5</div>
+            </div>
+          </div>
+
+          <div class="stack__grupo" data-scroll-revelar data-delay="150">
+            <div class="stack__grupo-header">
+              <span class="stack__grupo-icono">🖥️</span>
+              <h3 class="stack__grupo-titulo">Frontend</h3>
+            </div>
+            <div class="stack__tecnologias">
+              <div class="tech-pill tech-pill--destacado">React</div>
+              <div class="tech-pill tech-pill--destacado">Next.js</div>
+              <div class="tech-pill">Responsive Design</div>
+              <div class="tech-pill">CSS Modules</div>
+            </div>
+          </div>
+
+          <div class="stack__grupo" data-scroll-revelar data-delay="250">
+            <div class="stack__grupo-header">
+              <span class="stack__grupo-icono">🗄️</span>
+              <h3 class="stack__grupo-titulo">Backend & DB</h3>
+            </div>
+            <div class="stack__tecnologias">
+              <div class="tech-pill tech-pill--destacado">PostgreSQL</div>
+              <div class="tech-pill tech-pill--destacado">Prisma</div>
+              <div class="tech-pill">Firebase</div>
+              <div class="tech-pill">Google Console</div>
+              <div class="tech-pill">Auth / Sessions</div>
+            </div>
+          </div>
+
+          <div class="stack__grupo" data-scroll-revelar data-delay="350">
+            <div class="stack__grupo-header">
+              <span class="stack__grupo-icono">🛠️</span>
+              <h3 class="stack__grupo-titulo">Herramientas</h3>
+            </div>
+            <div class="stack__tecnologias">
+              <div class="tech-pill tech-pill--destacado">Git / GitHub</div>
+              <div class="tech-pill">Cloudinary</div>
+              <div class="tech-pill">Vercel</div>
+              <div class="tech-pill">Netlify</div>
+              <div class="tech-pill">Integración AI</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROYECTOS
+    ═══════════════════════════════════════════ -->
+    <section class="seccion proyectos" id="proyectos" aria-label="Proyectos destacados">
+      <div class="contenedor">
+
+        <div class="seccion__encabezado" data-scroll-revelar>
+          <div class="etiqueta-seccion">Trabajo</div>
+          <h2 class="titulo-seccion">Proyectos <em>Destacados</em></h2>
+        </div>
+
+        <div class="proyectos__grid">
+
+          <!-- Proyecto 1 - Grande -->
+          <article class="proyecto-card proyecto-card--grande" data-scroll-revelar data-delay="100">
+            <div class="proyecto-card__fondo" aria-hidden="true"></div>
+            <div class="proyecto-card__inner">
+              <div class="proyecto-card__top">
+                <span class="proyecto-card__num">01</span>
+                <a
+                  href="https://urbanhustler.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="proyecto-card__enlace"
+                  aria-label="Ver Urban Hustler"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M3.75 14.25L14.25 3.75M14.25 3.75H7.5M14.25 3.75V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="proyecto-card__emoji" aria-hidden="true">🛍️</div>
+              <h3 class="proyecto-card__nombre">Urban Hustler</h3>
+              <p class="proyecto-card__descripcion">
+                E-commerce de ropa con panel de administración completo, gestión de
+                productos, chatbot de asistencia y sistema de sesiones de usuario.
+              </p>
+              <div class="proyecto-card__tags">
+                <span>Next.js</span><span>React</span><span>Prisma</span>
+                <span>Firebase</span><span>Cloudinary</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="proyecto-card" data-scroll-revelar data-delay="200">
+            <div class="proyecto-card__fondo" aria-hidden="true"></div>
+            <div class="proyecto-card__inner">
+              <div class="proyecto-card__top">
+                <span class="proyecto-card__num">02</span>
+                <a
+                  href="https://facuuuu.netlify.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="proyecto-card__enlace"
+                  aria-label="Ver Tienda Facuuuu"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M3.75 14.25L14.25 3.75M14.25 3.75H7.5M14.25 3.75V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="proyecto-card__emoji" aria-hidden="true">👕</div>
+              <h3 class="proyecto-card__nombre">logins</h3>
+              <p class="proyecto-card__descripcion">
+                login agradable.
+              </p>
+              <div class="proyecto-card__tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="proyecto-card" data-scroll-revelar data-delay="300">
+            <div class="proyecto-card__fondo" aria-hidden="true"></div>
+            <div class="proyecto-card__inner">
+              <div class="proyecto-card__top">
+                <span class="proyecto-card__num">03</span>
+              </div>
+              <div class="proyecto-card__emoji" aria-hidden="true">💼</div>
+              <h3 class="proyecto-card__nombre">Proyectos Freelance</h3>
+              <p class="proyecto-card__descripcion">
+                Landing pages y sitios a medida para negocios locales. Ciclo completo:
+                relevamiento, diseño, desarrollo y despliegue.
+              </p>
+              <div class="proyecto-card__tags">
+                <span>React</span><span>Next.js</span><span>Landing Page</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MÁS ALLÁ DEL CÓDIGO
+    ═══════════════════════════════════════════ -->
+    <section class="seccion intereses" id="intereses" aria-label="Más allá del código">
+      <div class="contenedor">
+
+        <div class="intereses__grid">
+          <div data-scroll-revelar>
+            <div class="etiqueta-seccion">Off topic</div>
+            <h2 class="titulo-seccion">Más allá del <em>código</em></h2>
+            <p class="seccion__descripcion">
+              El equilibrio y la creatividad también viven fuera del editor.
+            </p>
+          </div>
+
+          <div class="intereses__cards">
+            <div class="interes" data-scroll-revelar data-delay="100">
+              <span class="interes__emoji" aria-hidden="true">🧀</span>
+              <div>
+                <h3 class="interes__titulo">Cocinero aficionado</h3>
+                <p class="interes__texto">Técnica muy pulida para el <em>chipá con fécula de mandioca</em>. La cocina como arte aplicada.</p>
+              </div>
+            </div>
+            <div class="interes" data-scroll-revelar data-delay="200">
+              <span class="interes__emoji" aria-hidden="true">📸</span>
+              <div>
+                <h3 class="interes__titulo">Fotografía & edición</h3>
+                <p class="interes__texto">Edición visual para redes sociales. El ojo estético que también aplico al diseño de interfaces.</p>
+              </div>
+            </div>
+            <div class="interes" data-scroll-revelar data-delay="300">
+              <span class="interes__emoji" aria-hidden="true">⚽</span>
+              <div>
+                <h3 class="interes__titulo">Hincha de Boca juniors</h3>
+                <p class="interes__texto">Los partidos son el descanso obligatorio del debuggeo semanal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACTO
+    ═══════════════════════════════════════════ -->
+    <section class="seccion contacto" id="contacto" aria-label="Contacto">
+      <div class="contenedor">
+
+        <div class="contacto__inner">
+
+          <div class="contacto__texto">
+            <div class="etiqueta-seccion etiqueta-seccion--claro" data-scroll-revelar>Hablemos</div>
+            <h2 class="titulo-seccion titulo-seccion--claro" data-scroll-revelar data-delay="100">
+              ¿Trabajamos<br><em>juntos?</em>
+            </h2>
+            <p class="contacto__descripcion" data-scroll-revelar data-delay="200">
+              Abierto a proyectos freelance, posiciones de trabajo y charlas de tecnología.
+              No dudes en escribirme.
+            </p>
+
+            <div class="contacto__datos" data-scroll-revelar data-delay="300">
+              <a href="mailto:facundotomas018@gmail.com" class="dato-contacto">
+                <div class="dato-contacto__icono" aria-hidden="true">📧</div>
+                <div>
+                  <p class="dato-contacto__label">Email</p>
+                  <p class="dato-contacto__valor">facundotomas018@gmail.com</p>
+                </div>
+              </a>
+              <a href="tel:+543758545846" class="dato-contacto">
+                <div class="dato-contacto__icono" aria-hidden="true">📱</div>
+                <div>
+                  <p class="dato-contacto__label">Teléfono</p>
+                  <p class="dato-contacto__valor">3758-545846</p>
+                </div>
+              </a>
+              <div class="dato-contacto">
+                <div class="dato-contacto__icono" aria-hidden="true">📍</div>
+                <div>
+                  <p class="dato-contacto__label">Ubicación</p>
+                  <p class="dato-contacto__valor">Ciudad de Buenos Aires, CABA</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Panel de acción -->
+          <div class="contacto__panel" data-scroll-revelar data-delay="200">
+            <div class="contacto__disponible">
+              <div class="contacto__estado-punto" aria-hidden="true"></div>
+              <p>Actualmente <strong>disponible</strong> para nuevas oportunidades</p>
+            </div>
+            <div class="contacto__tipos">
+              <span>Freelance ✓</span>
+              <span>Part-time ✓</span>
+              <span>Remoto ✓</span>
+            </div>
+            <a href="mailto:facundotomas018@gmail.com" class="contacto__boton btn-magnetico">
+              Enviarme un mensaje
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3.75 14.25L14.25 3.75M14.25 3.75H7.5M14.25 3.75V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="contenedor footer__inner">
+      <span class="footer__logo">FA<span>.</span></span>
+      <p class="footer__copy">Diseñado y desarrollado por Facundo Argüello · Buenos Aires 2025</p>
+      <button
+        class="footer__top"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        aria-label="Volver al inicio"
+      >↑</button>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS MODULARES
+  ═══════════════════════════════════════════ -->
+  <script src="js/cursor.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/animaciones.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

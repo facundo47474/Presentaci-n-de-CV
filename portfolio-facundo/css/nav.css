@@ -1,0 +1,286 @@
+/* ═══════════════════════════════════════════════════════════════
+   NAV.CSS — Barra de navegación fija
+   Portfolio de Facundo Argüello
+═══════════════════════════════════════════════════════════════ */
+
+
+/* -------------------------------------------------------
+   BARRA PRINCIPAL
+------------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding-block: 1.4rem;
+  animation: navEntrada 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* Estado con scroll — fondo con blur */
+.nav.con-scroll {
+  padding-block: 1rem;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(228, 231, 237, 0.8);
+  box-shadow: 0 2px 24px rgba(10, 22, 40, 0.06);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* En la sección hero (fondo marino), el nav es transparente */
+.nav.en-hero {
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+
+/* -------------------------------------------------------
+   INNER — layout flex
+------------------------------------------------------- */
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+
+/* -------------------------------------------------------
+   LOGO
+------------------------------------------------------- */
+.nav__logo {
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blanco);
+  letter-spacing: -0.02em;
+  transition: color var(--transicion);
+  flex-shrink: 0;
+}
+
+.nav__logo-punto {
+  color: var(--azul-claro);
+}
+
+/* Cuando hay scroll, el logo cambia a marino */
+.nav.con-scroll .nav__logo {
+  color: var(--marino);
+}
+
+.nav.con-scroll .nav__logo-punto {
+  color: var(--azul-vivo);
+}
+
+
+/* -------------------------------------------------------
+   LINKS DE DESKTOP
+------------------------------------------------------- */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav__link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  transition: color var(--transicion);
+  white-space: nowrap;
+}
+
+/* Subrayado animado */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--azul-claro);
+  transition: width var(--transicion);
+}
+
+.nav__link:hover {
+  color: var(--blanco);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* Links con scroll (fondo blanco) */
+.nav.con-scroll .nav__link {
+  color: var(--gris-texto);
+}
+
+.nav.con-scroll .nav__link::after {
+  background: var(--azul-vivo);
+}
+
+.nav.con-scroll .nav__link:hover {
+  color: var(--marino);
+}
+
+/* Link activo */
+.nav__link.activo {
+  color: var(--azul-claro);
+}
+
+.nav.con-scroll .nav__link.activo {
+  color: var(--azul-vivo);
+}
+
+.nav__link.activo::after {
+  width: 100%;
+}
+
+
+/* -------------------------------------------------------
+   BOTÓN CTA DEL NAV
+------------------------------------------------------- */
+.nav__cta {
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--blanco);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: var(--transicion);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav__cta:hover {
+  background: var(--blanco);
+  color: var(--marino);
+  border-color: var(--blanco);
+}
+
+/* Con scroll */
+.nav.con-scroll .nav__cta {
+  background: var(--marino);
+  color: var(--blanco);
+  border-color: var(--marino);
+}
+
+.nav.con-scroll .nav__cta:hover {
+  background: var(--azul-vivo);
+  border-color: var(--azul-vivo);
+}
+
+
+/* -------------------------------------------------------
+   HAMBURGUESA (SOLO MOBILE)
+------------------------------------------------------- */
+.nav__hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 32px;
+  height: 32px;
+  cursor: none;
+  z-index: 1100;
+  flex-shrink: 0;
+}
+
+.nav__hamburguesa span {
+  display: block;
+  height: 1.5px;
+  background: var(--blanco);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.nav.con-scroll .nav__hamburguesa span {
+  background: var(--marino);
+}
+
+/* Estado abierto */
+.nav__hamburguesa.activo span:nth-child(1) {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+.nav__hamburguesa.activo span:nth-child(2) {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+
+/* -------------------------------------------------------
+   OVERLAY / MENÚ MOBILE
+------------------------------------------------------- */
+.nav__overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--marino);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.nav__overlay.activo {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.nav__overlay-link {
+  font-family: var(--fuente-display);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: block;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav__overlay.activo .nav__overlay-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay escalonado en los links del overlay */
+.nav__overlay.activo .nav__overlay-link:nth-child(1) { transition-delay: 0.1s; }
+.nav__overlay.activo .nav__overlay-link:nth-child(2) { transition-delay: 0.15s; }
+.nav__overlay.activo .nav__overlay-link:nth-child(3) { transition-delay: 0.2s; }
+.nav__overlay.activo .nav__overlay-link:nth-child(4) { transition-delay: 0.25s; }
+.nav__overlay.activo .nav__overlay-link:nth-child(5) { transition-delay: 0.3s; }
+
+.nav__overlay-link:hover {
+  color: var(--blanco);
+  transform: translateX(8px) !important;
+}
+
+
+/* -------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 900px) {
+  .nav__links,
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__hamburguesa {
+    display: flex;
+  }
+}

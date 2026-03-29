@@ -1,0 +1,316 @@
+/* ═══════════════════════════════════════════════════════════════
+   ESTILOS-GLOBALES.CSS — Variables, reset, tipografía, utilidades
+   Portfolio de Facundo Argüello
+═══════════════════════════════════════════════════════════════ */
+
+
+/* -------------------------------------------------------
+   VARIABLES DE DISEÑO
+------------------------------------------------------- */
+:root {
+  /* Paleta principal */
+  --blanco:         #ffffff;
+  --gris-suave:     #f6f7f9;
+  --gris-borde:     #e4e7ed;
+  --gris-texto:     #64748b;
+  --negro-suave:    #0f172a;
+  --negro:          #080c14;
+
+  /* Marino (color dominante) */
+  --marino:         #0a1628;
+  --marino-medio:   #132240;
+  --marino-claro:   #1e3a5f;
+
+  /* Azul eléctrico (acento) */
+  --azul:           #1d4ed8;
+  --azul-vivo:      #2563eb;
+  --azul-claro:     #60a5fa;
+  --azul-suave:     #dbeafe;
+
+  /* Tipografía */
+  --fuente-display: 'Cormorant Garamond', Georgia, serif;
+  --fuente-cuerpo:  'DM Sans', system-ui, sans-serif;
+  --fuente-mono:    'DM Mono', 'Fira Code', monospace;
+
+  /* Espaciado */
+  --espacio-xs:     0.5rem;
+  --espacio-sm:     1rem;
+  --espacio-md:     1.5rem;
+  --espacio-lg:     2.5rem;
+  --espacio-xl:     4rem;
+  --espacio-2xl:    7rem;
+
+  /* Bordes */
+  --radio-sm:       6px;
+  --radio-md:       12px;
+  --radio-lg:       20px;
+  --radio-xl:       32px;
+
+  /* Sombras */
+  --sombra-sm:      0 2px 8px rgba(10, 22, 40, 0.06);
+  --sombra-md:      0 8px 32px rgba(10, 22, 40, 0.10);
+  --sombra-lg:      0 20px 60px rgba(10, 22, 40, 0.15);
+  --sombra-azul:    0 12px 40px rgba(29, 78, 216, 0.25);
+
+  /* Transiciones */
+  --transicion:     0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicion-suave: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* -------------------------------------------------------
+   RESET MODERNO
+------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--blanco);
+  color: var(--negro-suave);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  /* Cursor personalizado */
+  cursor: none;
+}
+
+/* En móvil, restaurar cursor del sistema */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  a, button { cursor: pointer; }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: none;
+  font-family: inherit;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 600;
+}
+
+
+/* -------------------------------------------------------
+   BARRA DE PROGRESO DE SCROLL (top fixed)
+------------------------------------------------------- */
+.barra-progreso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--azul-vivo), var(--azul-claro));
+  z-index: 10000;
+  transition: width 0.1s linear;
+}
+
+
+/* -------------------------------------------------------
+   TIPOGRAFÍA GLOBAL
+------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-display);
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+
+/* -------------------------------------------------------
+   CONTENEDOR CENTRALIZADO
+------------------------------------------------------- */
+.contenedor {
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+
+/* -------------------------------------------------------
+   ETIQUETA DE SECCIÓN (chip pequeño)
+------------------------------------------------------- */
+.etiqueta-seccion {
+  display: inline-block;
+  font-family: var(--fuente-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--azul-vivo);
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 100px;
+  background: rgba(37, 99, 235, 0.05);
+  margin-bottom: 1.2rem;
+}
+
+/* Versión clara (para fondo marino) */
+.etiqueta-seccion--claro {
+  color: var(--azul-claro);
+  border-color: rgba(96, 165, 250, 0.35);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+
+/* -------------------------------------------------------
+   TÍTULOS DE SECCIÓN
+------------------------------------------------------- */
+.titulo-seccion {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--negro-suave);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.titulo-seccion em {
+  color: var(--azul-vivo);
+  font-style: italic;
+}
+
+/* Versión clara (fondo marino) */
+.titulo-seccion--claro {
+  color: var(--blanco);
+}
+
+.titulo-seccion--claro em {
+  color: var(--azul-claro);
+}
+
+
+/* -------------------------------------------------------
+   DESCRIPCIÓN DE SECCIÓN
+------------------------------------------------------- */
+.seccion__descripcion {
+  color: var(--gris-texto);
+  font-size: 1.05rem;
+  max-width: 520px;
+  line-height: 1.75;
+}
+
+.seccion__encabezado {
+  margin-bottom: var(--espacio-xl);
+}
+
+
+/* -------------------------------------------------------
+   SECCIÓN BASE — padding uniforme
+------------------------------------------------------- */
+.seccion {
+  padding-block: var(--espacio-2xl);
+}
+
+
+/* -------------------------------------------------------
+   BOTONES
+------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: var(--transicion);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto ripple en el botón */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-110%);
+  transition: transform 0.4s ease;
+  border-radius: inherit;
+}
+
+.btn:hover::before {
+  transform: translateX(0);
+}
+
+/* Botón primario — marino sólido */
+.btn-primario {
+  background: var(--marino);
+  color: var(--blanco);
+  box-shadow: var(--sombra-md);
+}
+
+.btn-primario:hover {
+  background: var(--marino-claro);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-lg);
+}
+
+/* Botón secundario — contorno */
+.btn-secundario {
+  background: transparent;
+  color: var(--negro-suave);
+  border: 1.5px solid var(--gris-borde);
+}
+
+.btn-secundario:hover {
+  border-color: var(--marino);
+  color: var(--marino);
+  transform: translateY(-2px);
+}
+
+
+/* -------------------------------------------------------
+   EFECTO MAGNÉTICO — JS agrega movimiento
+------------------------------------------------------- */
+.btn-magnetico {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow var(--transicion);
+}
+
+
+/* -------------------------------------------------------
+   SEPARADOR DE SECCIÓN
+------------------------------------------------------- */
+.divisor {
+  border: none;
+  border-top: 1px solid var(--gris-borde);
+  margin-block: var(--espacio-xl);
+}
+
+
+/* -------------------------------------------------------
+   RESPONSIVE — TIPOGRAFÍA FLUIDA
+------------------------------------------------------- */
+@media (max-width: 480px) {
+  :root { font-size: 15px; }
+}
