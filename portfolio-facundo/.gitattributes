@@ -1,0 +1,13 @@
+# Forzar que Git maneje los finales de línea automáticamente
+* text=auto
+
+# Asegurar que los archivos de código siempre usen LF (ideal para Vercel/Linux)
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+
+# Los archivos binarios (imágenes, iconos) no se tocan
+*.png binary
+*.jpg binary
+*.ico binary
