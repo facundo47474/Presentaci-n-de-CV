@@ -1,9 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/favicon.ico",
-      "destination": "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAAAAMAtSJ9MAAAAFElEQVR42mP8/5+dgYBh1YAwEwAAzD8Cz9bS158AAAAASUVORK5CYII="
-    }
-  ]
+  "cleanUrls": true
 }
