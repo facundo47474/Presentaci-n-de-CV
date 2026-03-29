@@ -156,10 +156,20 @@ const moduloNav = (() => {
      INICIALIZAR
   ------------------------------------------------------- */
   const inicializar = () => {
-    // Eventos de scroll — passive para mejor rendimiento
-    window.addEventListener('scroll', manejarScrollNav,     { passive: true });
-    window.addEventListener('scroll', actualizarLinkActivo, { passive: true });
-    window.addEventListener('scroll', actualizarProgreso,   { passive: true });
+    let ticking = false;
+
+    // Listener de scroll centralizado y optimizado
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          manejarScrollNav();
+          actualizarLinkActivo();
+          actualizarProgreso();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Menú mobile
     hamburguesa.addEventListener('click', alternarMenu);
