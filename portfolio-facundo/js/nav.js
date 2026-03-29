@@ -16,6 +16,7 @@ const moduloNav = (() => {
   const linksCerrar  = document.querySelectorAll('[data-cerrar]');
   const linksNav     = document.querySelectorAll('.nav__links .nav__link');
   const secciones    = document.querySelectorAll('section[id]');
+  const hero         = document.getElementById('inicio');
 
   /* -------------------------------------------------------
      BARRA DE PROGRESO — actualiza al hacer scroll
@@ -38,7 +39,6 @@ const moduloNav = (() => {
     nav.classList.toggle('con-scroll', scrollY > 80);
 
     // Clase especial cuando está sobre el hero
-    const hero = document.getElementById('inicio');
     if (hero) {
       const limiteHero = hero.offsetHeight - 100;
       nav.classList.toggle('en-hero', scrollY < limiteHero);
@@ -95,27 +95,14 @@ const moduloNav = (() => {
      SCROLL SUAVE — al hacer click en links de sección
   ------------------------------------------------------- */
   const configurarScrollSuave = () => {
-    // Links del nav
-    linksNav.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          const destino = document.querySelector(href);
-          if (destino) {
-            const offsetTop = destino.offsetTop - 80;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-    // Botones hero
+    // Seleccionamos todos los enlaces internos (nav y botones del hero)
     document.querySelectorAll('a[href^="#"]').forEach((enlace) => {
       enlace.addEventListener('click', (e) => {
         const href = enlace.getAttribute('href');
-        if (href === '#') return;
+        if (!href || href === '#') return;
+
         const destino = document.querySelector(href);
+        
         if (destino) {
           e.preventDefault();
           const offsetTop = destino.offsetTop - 80;
